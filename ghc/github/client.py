@@ -17,11 +17,11 @@ class GithubClient(object):
     def __init__(
         self,
         session=None,
-        api_token=constants.GITHUB_API_TOKEN,
+        api_token=None,
         base_url=GITHUB_BASE_URL,
     ):
         self.session = session or requests.Session()
-        self.session.auth = GithubAuth(api_token=api_token)
+        self.session.auth = GithubAuth(api_token=api_token or constants.GITHUB_API_TOKEN)
         self.session.headers.update({
             "Content-Type": "application/json",
         })
@@ -54,13 +54,3 @@ class GithubClient(object):
             "endpoint": f"users/{self.OWNER}/repos",
         }
         return self.request(**http_kwargs).json()
-
-
-if __name__ == '__main__':
-    import ghc.constants as constants
-    gh = GithubClient(api_token=constants.GITHUB_API_TOKEN)
-    # res = gh.get_user()
-    gh.get_user_repos()
-
-    # res = gh.get_issues("python-resources")
-    # print(res

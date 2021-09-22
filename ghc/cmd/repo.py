@@ -21,7 +21,5 @@ def repo():
 @click.pass_context
 @github.command()
 def ls(ctx, client, number):
-    print(ctx.obj)
-    # result = client.get_user_repos()
-    # click.echo(result[:number])
-
+    result = client.get_user_repos()
+    click.echo(result[:number])

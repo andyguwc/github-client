@@ -14,6 +14,12 @@ __pycache__/
 *.log
 *.out
 
+# Dist files
+build/
+dist/
+.eggs/
+*.egg-info
+
 # Development / editors
 dev/
 .vscode/
